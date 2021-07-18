@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import "./FetchData.css";
+
 
 const FetchData = () => {
   const [pokeData, setPokeData] = useState([]);
@@ -14,11 +16,30 @@ const FetchData = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch("https://pokeapi.co/api/v2/ability/1", requestOptions)
+    fetch("https://pokeapi.co/api/v2/ability", requestOptions)
       .then((response) => response.json())
-      .then((data) => setPokeData(data));
+      .then((data) => setPokeData(data.results));
   };
-  return <h1>Hey</h1>;
+
+  const renderEachItem = (item, index) => {
+    return (
+      <tr>
+        <td>{item.name}</td>
+        <td>{item.url}</td>
+      </tr>
+    );
+  };
+  return (
+    <div>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>URL</th>
+        </tr>
+        {pokeData !== [] ? pokeData.map((item, index) => renderEachItem(item, index)) : (<p>Empty Data</p>)}
+      </table>
+    </div>
+  );
 };
 
 export default FetchData;
