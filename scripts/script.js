@@ -112,6 +112,7 @@ window.onclick = function (event) {
 
 function fetchDataForModal(url) {
   let subContentData = document.getElementById("subContentData");
+  subContentData.innerHTML='';
   const requestOptions = {
     method: "GET",
   };
