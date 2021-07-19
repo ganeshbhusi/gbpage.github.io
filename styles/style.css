@@ -143,6 +143,8 @@ body {
   border: 1px solid #888;
   width: 80%;
   border-radius: 8px;
+  max-height: 500px;
+  overflow: auto;
 }
 
 /* The Close Button */
